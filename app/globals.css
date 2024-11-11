@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'Pavelt';
+  src: url('../public/fonts/Pavelt-JRjpM.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pavelt';
+  src: url('../public/fonts/Pavelt-VG24B.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #000000;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  html {
+    --color-font-color: #a1a1a1;
+    --color-font-color-hover: #ededed;
+    --color-background-color: #0a0a0a;
+    --color-background-color-hover: #1f1f1f;
+    --color-border-color: #ffffff24;
+    
+  }
+}
+
+.shake {
+  animation: shake 0.2s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(10px);
+  }
+}
