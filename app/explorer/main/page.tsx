@@ -1,7 +1,7 @@
 'use client'
 
 import { Area, AreaChart, Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
-import data from "@/stack/data"
+import {data1} from "@/stack/data"
 
 const ExplorerMain = () => {
   return (
@@ -15,7 +15,7 @@ const ExplorerMain = () => {
           </div>
           <p className="mt-2 mb-4 text-5xl font-medium text-fontHover">$ 1,386,938</p>
           <ResponsiveContainer width="100%" height={123}>
-            <AreaChart width={730} height={250} data={data}>
+            <AreaChart width={730} height={250} data={data1}>
               <defs>
                 <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="#82ca9d" stopOpacity={0.8} />
@@ -46,7 +46,7 @@ const ExplorerMain = () => {
         </div>
         <div className="flex flex-col gap-4 p-6 border rounded-lg border-borderColor bg-bgColor" >
           <p className="text-xs leading-4 text-fontColor">Total RWA Earning</p>
-          <p className="text-2xl text-fontHover">$ 4,834.69</p>
+          <p className="text-2xl text-fontHover">$ 0</p>
         </div>
       </div>
     </div>
