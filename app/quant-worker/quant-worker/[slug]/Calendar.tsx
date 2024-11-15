@@ -47,22 +47,26 @@ const Calendar = ({ setSelectedDay }: any) => {
   }
 
   return (
-    <div className="col-span-3 bg-bgColor border border-borderColor text-fontColor rounded-lg px-10 py-9 h-[600px] flex flex-col">
+    <div className="col-span-3 bg-bgColor border border-borderColor text-fontColor rounded-lg px-10 py-9 flex flex-col">
       <div className="flex justify-between items-center mb-5">
         <button
-          onClick={() => setStateCalendar((prev) => (prev + 1) > 2 ? 0 : prev + 1)}
+          onClick={() => setStateCalendar((prev) => (prev + 1) > 3 ? 0 : prev + 1)}
           className="text-xl font-bold text-fontHover pl-5"
         >
           {
             stateCalendar === 0 ? moment(currentDay).format('MMM, YYYY')
-            : moment(currentDay).format('YYYY')
+              : stateCalendar === 1 ? moment(currentDay).format('YYYY')
+                : stateCalendar === 2 ? (Math.floor(moment(currentDay).year() / 10) * 10 - 1) + ' - ' + (Math.floor(moment(currentDay).year() / 10) * 10 + 10)
+                  : (Math.floor(moment(currentDay).year() / 100) * 100 - 10) + ' - ' + (Math.floor(moment(currentDay).year() / 100) * 100 + 100)
           }
         </button>
         <div className="flex items-center gap-2">
           <button
             onClick={() => {
               stateCalendar === 0 ? setCurrentDay(moment(currentDay).subtract(1, 'months').toDate())
-              : setCurrentDay(moment(currentDay).subtract(1, 'year').toDate())
+                : stateCalendar === 1 ? setCurrentDay(moment(currentDay).subtract(1, 'year').toDate())
+                  : stateCalendar === 2 ? setCurrentDay(moment(currentDay).subtract(10, 'year').toDate())
+                    : setCurrentDay(moment(currentDay).subtract(100, 'year').toDate())
             }}
             className="h-8 w-8 border border-borderColor bg-black flex items-center justify-center rounded-lg hover:scale-110 hover:bg-bgHover transition-all duration-300 ease-in-out outline-none"
           >
@@ -71,7 +75,9 @@ const Calendar = ({ setSelectedDay }: any) => {
           <button
             onClick={() => {
               stateCalendar === 0 ? setCurrentDay(moment(currentDay).add(1, 'months').toDate())
-              : setCurrentDay(moment(currentDay).add(1, 'year').toDate())
+                : stateCalendar === 1 ? setCurrentDay(moment(currentDay).add(1, 'year').toDate())
+                  : stateCalendar === 2 ? setCurrentDay(moment(currentDay).add(10, 'year').toDate())
+                    : setCurrentDay(moment(currentDay).add(100, 'year').toDate())
             }}
             className="h-8 w-8 border border-borderColor bg-black flex items-center justify-center rounded-lg hover:scale-110 hover:bg-bgHover transition-all duration-300 ease-in-out outline-none"
           >
@@ -114,14 +120,66 @@ const Calendar = ({ setSelectedDay }: any) => {
               <div className="grid grid-cols-4 gap-5 w-full">
                 {
                   months.map((month, index) => <button key={index}
-                    className="bg-black border border-borderColor rounded-lg text-xl text-fontHover hover:scale-105 hover:bg-bgHover transition-all duration-300 ease-in-out">
+                    className="bg-black border border-borderColor rounded-lg text-xl text-fontHover hover:scale-105 hover:bg-bgHover transition-all duration-300 ease-in-out min-h-[160px] h-full"
+                    onClick={() => {
+                      setStateCalendar((prev) => (prev - 1))
+                      setCurrentDay(moment(currentDay).month(index).toDate())
+                    }}
+                  >
                     {month}
                   </button>
                   )
                 }
               </div>
             </div>
-            : ''
+            : stateCalendar === 2 ?
+              <div className="flex-1 flex items-stretch w-full my-5">
+                <div className="grid grid-cols-4 gap-5 w-full">
+                  {
+                    Array.from({ length: 12 }, (_, index) => {
+                      const currentYear = moment(currentDay).year();
+                      const startYear = Math.floor(currentYear / 10) * 10 - 1;
+                      const yearToShow = startYear + index;
+
+                      return (
+                        <button key={index}
+                          className="bg-black border border-borderColor rounded-lg text-xl text-fontHover hover:scale-105 hover:bg-bgHover transition-all duration-300 ease-in-out min-h-[160px] h-full"
+                          onClick={() => {
+                            setStateCalendar((prev) => (prev - 1))
+                            setCurrentDay(moment(currentDay).year(yearToShow).toDate())
+                          }}
+                        >
+                          {yearToShow}
+                        </button>
+                      )
+                    })
+                  }
+                </div>
+              </div>
+              :
+              <div className="flex-1 flex items-stretch w-full my-5">
+                <div className="grid grid-cols-4 gap-5 w-full">
+                  {
+                    Array.from({ length: 12 }, (_, index) => {
+                      const currentYear = moment(currentDay).year();
+                      const startYear = Math.floor(currentYear / 100) * 100 - 10;
+                      const yearToShow = startYear + index * 10;
+
+                      return (
+                        <button key={index}
+                          className="bg-black border border-borderColor rounded-lg text-xl text-fontHover hover:scale-105 hover:bg-bgHover transition-all duration-300 ease-in-out min-h-[160px] h-full"
+                          onClick={() => {
+                            setStateCalendar((prev) => (prev - 1))
+                            setCurrentDay(moment(currentDay).year(yearToShow).toDate())
+                          }}
+                        >
+                          {yearToShow} - {yearToShow + 10} 
+                        </button>
+                      )
+                    })
+                  }
+                </div>
+              </div>
 
       }
 

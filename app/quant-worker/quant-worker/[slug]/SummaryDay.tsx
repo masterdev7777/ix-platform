@@ -2,7 +2,6 @@ import dailyStock from "@/stack/dailyStock"
 import moment from "moment"
 
 const SummaryDay = ({ selectedDay }: any) => {
-  console.log(selectedDay)
   const data = dailyStock.find((item: any) => item.date === selectedDay)
 
   return (
