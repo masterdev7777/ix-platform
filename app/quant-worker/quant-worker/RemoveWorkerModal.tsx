@@ -38,7 +38,7 @@ const RemoveWorkerModal = ({ setRemoveWorkerModal, item }: RemoveWorkerModalProp
   }, [])
 
   return (
-    <div className="fixed w-screen h-screen flex justify-center items-center bg-black bg-opacity-70 z-[50] top-0 left-0 transition-opacity duration-300 ease-in-out">
+    <div className="fixed w-screen h-screen flex justify-center items-center bg-black bg-opacity-70 z-[51] top-0 left-0 transition-opacity duration-300 ease-in-out">
       <div ref={modalRef} className="border-2 border-borderColor bg-bgColor rounded-2xl py-10 px-10 flex flex-col gap-5 transition-all duration-150">
         <p>Are you sure to delete this worker?</p>
         <div className="flex justify-center gap-10 mt-10">

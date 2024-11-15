@@ -1,4 +1,4 @@
-import ShowWorker from "@/components/quant-worker/quant-worker/ShowWorker";
+import ShowWorker from "./ShowWorker"
 
 const QuantWorkerCreate = () => {
 

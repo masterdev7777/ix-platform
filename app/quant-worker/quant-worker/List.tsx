@@ -3,8 +3,8 @@
 import clsx from "clsx"
 import { useEffect, useRef, useState } from "react"
 import { BsThreeDots } from "react-icons/bs"
-import EditWorkerModal from "./quant-worker/quant-worker/EditWorkerModal"
-import RemoveWorkerModal from "./quant-worker/quant-worker/RemoveWorkerModal"
+import EditWorkerModal from "./EditWorkerModal"
+import RemoveWorkerModal from "./RemoveWorkerModal"
 
 const List = ({ item }: any) => {
   const [editWorkerModal, setEditWorkerModal] = useState<boolean>(false);

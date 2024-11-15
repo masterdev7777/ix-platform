@@ -1,6 +1,6 @@
 import Image from "next/image"
-import Worker from "./Worker"
 import workers from "@/stack/workers"
+import Worker from "./Worker";
 
 
 const ShowWorker = () => {

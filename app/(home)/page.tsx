@@ -1,4 +1,4 @@
-import HomeComponent from "@/components/Home/HomeComponent";
+import HomeComponent from "./HomeComponent";
 import mainMenu from "@/stack/mainMenu";
 
 export default function Home() {

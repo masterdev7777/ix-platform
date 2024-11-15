@@ -1,9 +1,9 @@
 'use client'
 
-import PayoutTable from "@/components/quant-worker/earning/PayoutTable";
-import RewardTable from "@/components/quant-worker/earning/RewardTable";
 import { useEffect, useState } from "react"
 import { FaSearch } from "react-icons/fa"
+import PayoutTable from "./PayoutTable";
+import RewardTable from "./RewardTable";
 
 const Earning = () => {
   const [align, setAlign] = useState<string>('payout');
@@ -46,16 +46,16 @@ const Earning = () => {
           </div>
           <div className="flex items-center justify-between rounded-md border border-borderColor p-1 h-10 bg-bgColor gap-4">
             <button
-              className={`w-full h-full flex justify-center items-center rounded-sm px-3 border border-borderColor transition-colors duration-300 ease-in-out ${align === 'payout' ? 'bg-fontHover text-bgColor hover:bg-fontColor' : 'bg-bgColor text-fontHover hover:bg-bgHover'}`}
-              onClick={() => setAlign('payout')}
-            >
-              Payout
-            </button>
-            <button
               className={`w-full h-full flex justify-center items-center rounded-sm px-3 border border-borderColor transition-colors duration-300 ease-in-out ${align === 'reward' ? 'bg-fontHover text-bgColor hover:bg-fontColor' : 'bg-bgColor text-fontHover hover:bg-bgHover'}`}
               onClick={() => setAlign('reward')}
             >
               Reward
+            </button>
+            <button
+              className={`w-full h-full flex justify-center items-center rounded-sm px-3 border border-borderColor transition-colors duration-300 ease-in-out ${align === 'payout' ? 'bg-fontHover text-bgColor hover:bg-fontColor' : 'bg-bgColor text-fontHover hover:bg-bgHover'}`}
+              onClick={() => setAlign('payout')}
+            >
+              Payout
             </button>
           </div>
         </div>

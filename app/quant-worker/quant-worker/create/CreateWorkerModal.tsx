@@ -3,8 +3,8 @@
 import { useContext, useEffect, useRef, useState } from "react"
 import { BiRefresh } from "react-icons/bi"
 import { FaCheck, FaCopy } from "react-icons/fa6"
-import { useProjects } from "@/lib/utils/context/ProjectsContext"
 import { useRouter } from "next/navigation"
+import { useProjects } from "@/lib/utils/context/ProjectsContext"
 
 const CreateWorkerModal = ({ setCreateWorkerModal, marketType }: CreateWorkerModalProps) => {
   const { projects, addProjects } = useProjects();

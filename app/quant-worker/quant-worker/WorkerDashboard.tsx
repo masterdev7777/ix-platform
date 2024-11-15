@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from "react";
-import Card from "@/components/Card";
-import Filter from "@/components/Filter"
-import List from "@/components/List";
 import { useProjects } from "@/lib/utils/context/ProjectsContext";
+import Filter from "./Filter";
+import Card from "./Card";
+import List from "./List";
 
 const WorkerDashboard = () => {
   const { projects } = useProjects();
@@ -35,6 +35,7 @@ const WorkerDashboard = () => {
               }
             </div>
       }
+      
     </div>
   )
 }

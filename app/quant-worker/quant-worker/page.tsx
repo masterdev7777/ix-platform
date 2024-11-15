@@ -1,4 +1,4 @@
-import WorkerDashboard from "@/components/quant-worker/quant-worker/WorkerDashboard"
+import WorkerDashboard from "./WorkerDashboard"
 
 const QuantWorker = () => {
   return (

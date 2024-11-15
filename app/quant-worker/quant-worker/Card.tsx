@@ -3,8 +3,9 @@
 import clsx from "clsx"
 import { useEffect, useRef, useState } from "react"
 import { BsThreeDots } from "react-icons/bs"
-import EditWorkerModal from "./quant-worker/quant-worker/EditWorkerModal"
-import RemoveWorkerModal from "./quant-worker/quant-worker/RemoveWorkerModal"
+import Link from "next/link"
+import EditWorkerModal from "./EditWorkerModal"
+import RemoveWorkerModal from "./RemoveWorkerModal"
 
 const Card = ({ item }: any) => {
   const [editWorkerModal, setEditWorkerModal] = useState<boolean>(false);
@@ -24,7 +25,7 @@ const Card = ({ item }: any) => {
   })
 
   return (
-    <div className="flex flex-col gap-3 py-5 pl-6 pr-4 border rounded-md border-borderColor bg-bgColor text-fontColor">
+    <div className="flex flex-col gap-3 py-5 pl-6 pr-4 border rounded-md border-borderColor bg-bgColor text-fontColor hover:scale-[1.02] transition-transform duration-300 ease-in-out">
       {
         editWorkerModal && <EditWorkerModal setEditWorkerModal={setEditWorkerModal} item={item} />
       }
@@ -34,7 +35,9 @@ const Card = ({ item }: any) => {
       <div className="flex items-center h-10 gap-4">
         <div className="flex items-center w-full gap-4">
           <div className="flex justify-start items-center gap-3 ">
-            <p className="text-fontHover text-lg overflow-hidden text-nowrap max-w-[180px] text-ellipsis">{item.name}</p>
+            <Link href={`/quant-worker/quant-worker/${item.name.trim().replaceAll(' ', '-').toLowerCase()}`} >
+              <p className="text-fontHover text-lg overflow-hidden text-nowrap max-w-[180px] text-ellipsis hover:underline ">{item.name}</p>
+            </Link>
             <div className="h-full ">
               <span className="relative flex h-3 w-3 items-center justify-center">
                 <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75
@@ -52,8 +55,8 @@ const Card = ({ item }: any) => {
         <div className="flex items-center gap-2.5">
           <div className={`border rounded h-[35px] w-[90px] flex justify-center items-center
                     ${item.status === 'running' ? 'text-green-500 border-green-500'
-                    : item.status === 'stop' ? 'text-yellow-500 border-yellow-500' : 'text-red-500 border-red-500'
-                  }`}>
+              : item.status === 'stop' ? 'text-yellow-500 border-yellow-500' : 'text-red-500 border-red-500'
+            }`}>
             {
               item.status === 'running' ? 'Evaluation'
                 : item.status === 'stop' ? 'Funded' : 'Failed'
@@ -75,6 +78,7 @@ const Card = ({ item }: any) => {
                 className="flex items-center justify-between h-10 gap-2 px-2 rounded-md hover:bg-bgHover w-full hover:text-fontHover transition-colors duration-300 ease-in-out"
                 onClick={() => {
                   setEditWorkerModal(true);
+                  setAddition(false)
                 }}
               >
                 Edit
@@ -84,6 +88,7 @@ const Card = ({ item }: any) => {
                 className="flex items-center h-10 gap-2 px-2 rounded-md hover:bg-bgHover w-full hover:text-fontHover transition-colors duration-300 ease-in-out"
                 onClick={() => {
                   setRemoveWorkerModal(true)
+                  setAddition(false)
                 }}
               >
                 Delete

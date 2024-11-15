@@ -1,13 +1,13 @@
 'use client'
 
 import clsx from "clsx"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import { BsThreeDots } from "react-icons/bs"
 import { FaSearch } from "react-icons/fa"
 import { FaAngleDown, FaListUl } from "react-icons/fa6"
 import { PiSquaresFour } from "react-icons/pi"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 const Filter = ({ setAlign, align }: any) => {
   const router = useRouter();
